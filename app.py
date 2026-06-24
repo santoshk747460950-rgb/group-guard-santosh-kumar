@@ -8,10 +8,6 @@ from threading import Thread, Timer
 BOT_TOKEN = os.environ.get('BOT_TOKEN', '8863140400:AAEN0HVEgFq1x5t-DDCy96pJMRzzTtAzUP8')
 bot = telebot.TeleBot(BOT_TOKEN)
 
-# YAHAN APNA TELEGRAM USER ID DAALEIN (Taki koi aur bot ko add na kar sake)
-# Example: OWNER_ID = 123456789
-OWNER_ID = 123456789 
-
 MUST_JOIN_GROUP = '@current_affairs_live_quiz'
 
 # Render ke liye ek simple web server
@@ -78,12 +74,7 @@ def handle_new_members(message):
     for member in message.new_chat_members:
         # CHECK: Agar kisi ne bot ko add kiya hai
         if member.id == bot.get_me().id:
-            if adder_id != OWNER_ID:
-                bot.send_message(chat_id, "⚠️ Mujhe yahan add karne ki permission nahi hai. Main is group ko chhod raha hu. Mujhe sirf mera owner add kar sakta hai.")
-                bot.leave_chat(chat_id)
-                return # Function yahi rok do
-            else:
-                bot.send_message(chat_id, "Hello! Main is group me aa gaya hu. Ab sabko rules follow karne honge.")
+            bot.send_message(chat_id, "Hello! Main is group me aa gaya hu. Ab sabko rules follow karne honge.")
                 
         # Khud ko ya bot ko add karne par count nahi badhega
         elif member.id != bot.get_me().id and member.id != adder_id:
