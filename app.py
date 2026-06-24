@@ -74,7 +74,7 @@ def handle_new_members(message):
     for member in message.new_chat_members:
         # CHECK: Agar kisi ne bot ko add kiya hai
         if member.id == bot.get_me().id:
-            bot.send_message(chat_id, "Hello! Main is group me aa gaya hu. Ab sabko rules follow karne honge.")
+            bot.send_message(chat_id, "Hello!")
                 
         # Khud ko ya bot ko add karne par count nahi badhega
         elif member.id != bot.get_me().id and member.id != adder_id:
